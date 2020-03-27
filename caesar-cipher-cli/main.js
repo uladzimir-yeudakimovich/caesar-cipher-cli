@@ -11,13 +11,12 @@ program
   .parse(process.argv);
 
 if (
-  !program.shift ||
-  !program.input ||
-  !program.output ||
-  typeof program.action !== 'string'
+  !['encode', 'decode'].includes(program.action) ||
+  isNaN(program.shift) ||
+  !Number.isInteger(+program.shift)
 ) {
-  console.log('stop!');
-  // process.stderr();
+  console.log('Please, enter valid data!');
+  process.exit(1);
 }
 
 const inputPathath = path.join(__dirname, program.input);
