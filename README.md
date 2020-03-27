@@ -8,9 +8,11 @@ CLI tool accept 4 options (short alias and full name):
 4.  **-a, --action**: an action encode/decode
 
 Action (encode/decode) and the shift are required.
-If the input file is missed - use console as an input source.
-If the output file is missed - use console as an output destination.
-For encoding/decoding use only the English alphabet.
+Action maybe only encode or decode.
+Shift maybe only integer number.
+If the input file is missed - use the console for input.
+If the output file is missed - see result in the console.
+Encoding / decoding only supports the English alphabet.
 
 **Usage example:**
 

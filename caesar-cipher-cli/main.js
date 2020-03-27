@@ -16,11 +16,8 @@ if (
   !Number.isInteger(+program.shift)
 ) {
   console.log('Please, enter valid data!');
-  process.exit(1);
+  // process.exit(1);
 }
-
-const inputPathath = path.join(__dirname, program.input);
-const outputPathath = path.join(__dirname, program.output);
 
 const shiftTr = new Transform({
   transform(chunk, encoding, callback) {
@@ -30,12 +27,20 @@ const shiftTr = new Transform({
 });
 
 pipeline(
-  fs.createReadStream(inputPathath),
+  program.input
+    ? fs.createReadStream(path.join(__dirname, program.input))
+    : process.stdin,
   shiftTr,
-  fs.createWriteStream(outputPathath),
+  program.output
+    ? fs.createWriteStream(path.join(__dirname, program.output))
+    : process.stdout,
   error => {
     if (error) {
-      console.error(error);
+      if (error.code === 'ENOENT') {
+        console.log('No such file or directory, please check input path!');
+      } else {
+        console.error(error);
+      }
     } else {
       console.log('finished');
     }
