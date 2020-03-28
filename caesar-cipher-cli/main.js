@@ -20,29 +20,35 @@ if (
 }
 
 function caesarEncode(shift, text) {
-  let out = '';
+  let code = '';
   for (let i = 0; i < text.length; i++) {
-    let code = text.charCodeAt(i);
     if (/[A-Z]/gi.test(text[i])) {
-      code += +shift;
+      const alphabet =
+        text[i].toUpperCase() === text[i]
+          ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+          : 'abcdefghijklmnopqrstuvwxyz';
+      code += alphabet[(alphabet.indexOf(text[i]) + +shift) % 26];
+    } else {
+      code += text[i];
     }
-    out += String.fromCharCode(code);
   }
-  console.log(out);
-  return out;
+  return code;
 }
 
 function caesarDecode(shift, text) {
-  let out = '';
+  let code = '';
   for (let i = 0; i < text.length; i++) {
-    let code = text.charCodeAt(i);
     if (/[A-Z]/gi.test(text[i])) {
-      code -= +shift;
+      const alphabet =
+        text[i].toUpperCase() === text[i]
+          ? 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
+          : 'zyxwvutsrqponmlkjihgfedcba';
+      code += alphabet[(alphabet.indexOf(text[i]) + +shift) % 26];
+    } else {
+      code += text[i];
     }
-    out += String.fromCharCode(code);
   }
-  console.log(out);
-  return out;
+  return code;
 }
 
 const shiftTr = new Transform({
