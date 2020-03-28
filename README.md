@@ -20,17 +20,17 @@ $ cd caesar-cipher-cli
 $ node main -a encode -s 7 -i "./input.txt" -o "./output.txt"
 
 > input.txt
-> `Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!`
+> `This is secret. Message about "_" symbol!`
 
 > output.txt
-> `This is secret. Message about "_" symbol!`
+> `Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!`
 
 
 $ cd caesar-cipher-cli
 $ node main --action decode --shift 7 --input decoded.txt --output plain.txt
 
 > decoded.txt
-> `This is secret. Message about "_" symbol!`
+> `Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!`
 
 > plain.txt
-> `Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!`
+> `This is secret. Message about "_" symbol!`

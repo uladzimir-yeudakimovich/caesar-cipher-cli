@@ -19,7 +19,7 @@ if (
   // process.exit(1);
 }
 
-function caesarCode(shift, text) {
+function caesarEncode(shift, text) {
   let out = '';
   for (let i = 0; i < text.length; i++) {
     let code = text.charCodeAt(i);
@@ -30,9 +30,24 @@ function caesarCode(shift, text) {
   return out;
 }
 
+function caesarDecode(shift, text) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    let code = text.charCodeAt(i);
+    code -= +shift;
+    out += String.fromCharCode(code);
+  }
+  console.log(out);
+  return out;
+}
+
 const shiftTr = new Transform({
   transform(chunk, encoding, callback) {
-    this.push(caesarCode(program.shift, chunk.toString()));
+    if (program.action === 'encode') {
+      this.push(caesarEncode(program.shift, chunk.toString()));
+    } else if (program.action === 'decode') {
+      this.push(caesarDecode(program.shift, chunk.toString()));
+    }
     callback();
   }
 });
