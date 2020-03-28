@@ -23,7 +23,9 @@ pipeline(
   error => {
     if (error) {
       if (error.code === 'ENOENT') {
-        console.log('No such file or directory, please check input path!');
+        process.stderr.write(
+          'No such file or directory, please check input path!'
+        );
       } else {
         console.error(error);
       }

@@ -1,10 +1,10 @@
 const { program } = require('commander');
 
 program
-  .option('-s, --shift <number>', 'a shift')
+  .requiredOption('-s, --shift <number>', 'a shift')
+  .requiredOption('-a, --action <type>,', 'an action encode/decode')
   .option('-i, --input <filename>', 'an input file')
   .option('-o, --output <filename>', 'an output file')
-  .option('-a, --action <type>,', 'an action encode/decode')
   .parse(process.argv);
 
 if (
@@ -13,7 +13,7 @@ if (
   !Number.isInteger(+program.shift)
 ) {
   process.stderr.write(
-    'Action and shift are required. Please, stop server and enter valid data!'
+    'Action and shift are required. Please, enter valid data and try again!'
   );
   process.exitCode = 1;
 }
