@@ -3,15 +3,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { program } = require('./validation');
-const { caesarEncode, caesarDecode } = require('./encryption');
+const { caesarCode } = require('./encryption');
 
 const shiftTr = new Transform({
   transform(chunk, encoding, callback) {
-    if (program.action === 'encode') {
-      this.push(caesarEncode(program.shift, chunk.toString()));
-    } else if (program.action === 'decode') {
-      this.push(caesarDecode(program.shift, chunk.toString()));
-    }
+    this.push(caesarCode(program.shift, chunk.toString(), program.action));
     callback();
   }
 });

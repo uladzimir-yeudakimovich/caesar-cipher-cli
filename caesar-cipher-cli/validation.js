@@ -12,8 +12,10 @@ if (
   isNaN(program.shift) ||
   !Number.isInteger(+program.shift)
 ) {
-  console.log('Please, enter valid data!');
-  process.exit(400);
+  process.stderr.write(
+    'Action and shift are required. Please, stop server and enter valid data!'
+  );
+  process.exitCode = 1;
 }
 
 module.exports = program;
