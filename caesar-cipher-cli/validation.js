@@ -13,7 +13,7 @@ if (
   !Number.isInteger(+program.shift)
 ) {
   console.log('Please, enter valid data!');
-  // process.exit(1);
+  process.exit(400);
 }
 
 module.exports = program;
