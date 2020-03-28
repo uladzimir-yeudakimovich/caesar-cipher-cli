@@ -19,9 +19,20 @@ if (
   // process.exit(1);
 }
 
+function caesarCode(shift, text) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    let code = text.charCodeAt(i);
+    code += +shift;
+    out += String.fromCharCode(code);
+  }
+  console.log(out);
+  return out;
+}
+
 const shiftTr = new Transform({
   transform(chunk, encoding, callback) {
-    this.push(chunk.toString().toUpperCase());
+    this.push(caesarCode(program.shift, chunk.toString()));
     callback();
   }
 });
