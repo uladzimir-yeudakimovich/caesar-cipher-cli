@@ -23,7 +23,9 @@ function caesarEncode(shift, text) {
   let out = '';
   for (let i = 0; i < text.length; i++) {
     let code = text.charCodeAt(i);
-    code += +shift;
+    if (/[A-Z]/gi.test(text[i])) {
+      code += +shift;
+    }
     out += String.fromCharCode(code);
   }
   console.log(out);
@@ -34,7 +36,9 @@ function caesarDecode(shift, text) {
   let out = '';
   for (let i = 0; i < text.length; i++) {
     let code = text.charCodeAt(i);
-    code -= +shift;
+    if (/[A-Z]/gi.test(text[i])) {
+      code -= +shift;
+    }
     out += String.fromCharCode(code);
   }
   console.log(out);
