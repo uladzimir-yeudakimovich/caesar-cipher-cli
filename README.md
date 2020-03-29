@@ -17,7 +17,7 @@ $ cd caesar-cipher-cli
 
 Action (encode/decode) and the shift are required.
 Action maybe only encode or decode.
-Shift maybe only integer number.
+Shift maybe only positive integer number not equal to 0.
 If the input file is not selected - use the console for input.
 If the output file is not selected - see result in the console.
 If path to file is not correct - enter right path and try again.
