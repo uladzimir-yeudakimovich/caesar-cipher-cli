@@ -15,13 +15,13 @@ $ cd caesar-cipher-cli
 
 # Instruction
 
-Action (encode/decode) and the shift are required.
-Action maybe only encode or decode.
-Shift maybe only positive integer number not equal to 0.
-If the input file is not selected - use the console for input.
-If the output file is not selected - see result in the console.
-If path to file is not correct - enter right path and try again.
-Encoding / decoding only supports the English alphabet.
+1. Action (encode/decode) and the shift are required.
+2. Action maybe only encode or decode.
+3. Shift maybe only positive integer number not equal to 0.
+4. If the input file is not selected - use the console for input.
+5. If the output file is not selected - see result in the console.
+6. If path to file is not correct - enter right path and try again.
+7. Encoding / decoding only supports the English alphabet.
 
 # Usage example:
 
