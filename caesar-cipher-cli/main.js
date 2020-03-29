@@ -14,11 +14,13 @@ const shiftTr = new Transform({
 
 pipeline(
   program.input
-    ? fs.createReadStream(path.join(__dirname, program.input))
+    ? fs.createReadStream(path.join(__dirname, program.input), { flags: 'r' })
     : process.stdin,
   shiftTr,
   program.output
-    ? fs.createWriteStream(path.join(__dirname, program.output))
+    ? fs.createWriteStream(path.join(__dirname, program.output), {
+        flags: 'r+'
+      })
     : process.stdout,
   error => {
     if (error) {
@@ -30,7 +32,7 @@ pipeline(
         console.error(error);
       }
     } else {
-      console.log('Finished');
+      console.log('Encryption finished');
     }
   }
 );

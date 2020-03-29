@@ -11,24 +11,28 @@ program
 
 if (!['encode', 'decode'].includes(program.action)) {
   process.stderr.write(
-    "Action is required and should be have name 'encode' or 'decode'. Please stop the server, enter the correct data and try again!"
+    "Action is required and should be have name 'encode' or 'decode'. Please, enter the correct data and try again!"
   );
-  process.exitCode = 1;
+  // eslint-disable-next-line no-process-exit
+  process.exit(1);
 } else if (isNaN(program.shift)) {
   process.stderr.write(
-    'Shift should be number. Please stop the server, enter the correct data and try again!'
+    'Shift should be number. Please, enter the correct data and try again!'
   );
-  process.exitCode = 1;
+  // eslint-disable-next-line no-process-exit
+  process.exit(1);
 } else if (!Number.isInteger(+program.shift)) {
   process.stderr.write(
-    'Shift should be integer. Please stop the server, enter the correct data and try again!'
+    'Shift should be integer. Please, enter the correct data and try again!'
   );
-  process.exitCode = 1;
+  // eslint-disable-next-line no-process-exit
+  process.exit(1);
 } else if (+program.shift < 1) {
   process.stderr.write(
-    'Shift should be positive integer. Please stop the server, enter the correct data and try again!'
+    'Shift should be positive integer. Please, enter the correct data and try again!'
   );
-  process.exitCode = 1;
+  // eslint-disable-next-line no-process-exit
+  process.exit(1);
 }
 
 if (program.input) {
@@ -41,7 +45,8 @@ if (program.input) {
       } else {
         console.error(error);
       }
-      return;
+      // eslint-disable-next-line no-process-exit
+      process.exit(1);
     }
   });
 }
@@ -51,12 +56,13 @@ if (program.output) {
     if (error) {
       if (error.code === 'ENOENT') {
         process.stderr.write(
-          'Path is not exist. Please stop the server, enter the correct path for output file and try again!'
+          'Path is not exist. Please, enter the correct path for output file and try again!'
         );
       } else {
         console.error(error);
       }
-      return;
+      // eslint-disable-next-line no-process-exit
+      process.exit(1);
     }
   });
 }
