@@ -19,7 +19,7 @@ pipeline(
   shiftTr,
   program.output
     ? fs.createWriteStream(path.join(__dirname, program.output), {
-        flags: 'r+'
+        flags: 'a+'
       })
     : process.stdout,
   error => {
